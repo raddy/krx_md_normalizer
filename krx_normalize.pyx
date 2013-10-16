@@ -23,6 +23,9 @@ def two_level_fix_a3s(np.ndarray[object,ndim=1] symbols,np.ndarray[long,ndim=1] 
     for i in range(0,symbols.shape[0]):
         if msg_types[i] == 3:
             a3_count+=1
+            if not last_info.has_key(symbols[i]):
+                a3_violations+=1
+                continue
             if data[i,8] == last_info[symbols[i]][0]: #if the A3 price equals previous bid price
                 #SHIFT BIDS
                 data[i,] = [last_info[symbols[i]][4],last_info[symbols[i]][5],last_info[symbols[i]][0],0,
