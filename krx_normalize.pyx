@@ -29,11 +29,11 @@ def two_level_fix_a3s(np.ndarray[object,ndim=1] symbols,np.ndarray[long,ndim=1] 
             if data[i,8] == last_info[symbols[i]][0]: #if the A3 price equals previous bid price
                 #SHIFT BIDS
                 data[i,] = [last_info[symbols[i]][4],last_info[symbols[i]][5],last_info[symbols[i]][0],0,
-                            -1,-1,last_info[symbols[i]][2],last_info[symbols[i]][3],last_info[symbols[i]][8],last_info[symbols[i]][9]]
+                            -1,-1,last_info[symbols[i]][2],last_info[symbols[i]][3],data[i,8],data[i,9]]
             elif data[i,8] == last_info[symbols[i]][2]: #if the A3 price equals previous ask price
                 #SHIFT ASKS
                 data[i,] = [last_info[symbols[i]][2],0,last_info[symbols[i]][6],last_info[symbols[i]][7],
-                            last_info[symbols[i]][0],last_info[symbols[i]][1],-1,-1,last_info[symbols[i]][8],last_info[symbols[i]][9]]
+                            last_info[symbols[i]][0],last_info[symbols[i]][1],-1,-1,data[i,8],data[i,9]]
             else:
                 #shit yourself
                 a3_violations+=1
